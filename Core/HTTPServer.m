@@ -577,7 +577,14 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 {
 	HTTPLogTrace();
 	
-	NSAssert(dispatch_get_current_queue() == serverQueue, @"Invalid queue");
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Wdeprecated-declarations"
+    // The documentation for dispatch_get_current_queue() states:
+    //
+    // > [This method is] "recommended for debugging and logging purposes only"...
+    
+    NSAssert(dispatch_get_current_queue() == serverQueue, @"Invalid queue");
+    #pragma clang diagnostic pop
 	
 	if (type)
 	{
@@ -612,7 +619,14 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 {
 	HTTPLogTrace();
 	
-	NSAssert(dispatch_get_current_queue() == serverQueue, @"Invalid queue");
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Wdeprecated-declarations"
+    // The documentation for dispatch_get_current_queue() states:
+    //
+    // > [This method is] "recommended for debugging and logging purposes only"...
+    
+    NSAssert(dispatch_get_current_queue() == serverQueue, @"Invalid queue");
+    #pragma clang diagnostic pop
 	
 	if (netService)
 	{
